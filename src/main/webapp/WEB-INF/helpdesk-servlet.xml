@@ -41,19 +41,18 @@
 	</bean>
 
 	<!-- JSTL resolver -->
-	<!-- <bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/WEB-INF/jsp/" />
-		<property name="suffix" value=".jsp" />
-	</bean> -->
+	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" 
+		/> <property name="prefix" value="/WEB-INF/jsp/" /> <property name="suffix" 
+		value=".jsp" /> </bean> -->
 	<!-- DataSource -->
 	<bean
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		id="dataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/ticketing_demo"></property>
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/ticketing_demo"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="letmein"></property>
 	</bean>
@@ -73,7 +72,7 @@
 		</property>
 		<property name="packagesToScan" value="com.restapi.model"></property>
 	</bean>
-	
+
 	<!-- Transaction -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
@@ -83,5 +82,9 @@
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />
 
-	
+	<mvc:cors>
+		<mvc:mapping path="/**" />
+	</mvc:cors>
+
+
 </beans>
