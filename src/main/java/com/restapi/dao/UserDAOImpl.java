@@ -1,14 +1,18 @@
 package com.restapi.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.restapi.model.Projects;
 import com.restapi.model.Users;
 
 @Transactional(propagation=Propagation.REQUIRED,readOnly = false)
@@ -32,10 +36,51 @@ public class UserDAOImpl implements UserDAO{
 
 		return result;
 	}
-	
-	
-	
-	
-	
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Projects> getProjects(int qa_id) {
+		
+		SQLQuery query;
+		
+		String sql = "select projects.id, projects.pname, projects.tl_id from projects inner join users on users.id = projects.tl_id where projects.tl_id = :tlid";
+		
+		query = sessionfactory.getCurrentSession().createSQLQuery(sql);
+		
+		query.setParameter("tlid", qa_id);
+		
+		List<Object[]> result = query.list();
+		
+		List<Integer> plist = new ArrayList<Integer>();
+		
+		Projects project;
+		
+		List<Projects> projects = new ArrayList<Projects>();
+		
+		for(Object[] row : result)
+		{
+			int pid = (Integer) row[0];
+			
+			if(!plist.contains(pid))
+			{
+				project = new Projects();
+				
+				project.setId(pid);
+				project.setPname((String) row[1]);
+				project.setTl_id((Integer) row[2]);
+				projects.add(project);
+				plist.add(pid);
+				
+			}
+		}
+		
+		return projects;
+		
+	}
+
+	@Override
+	public Projects getProId(long id) {
+		return (Projects) sessionfactory.getCurrentSession().get(Projects.class, id);
+	}
+	
 }
