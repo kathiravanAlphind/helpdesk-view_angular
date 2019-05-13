@@ -10,10 +10,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ProjectComponent } from './dashboard/projects.component';
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent
+    AppComponent, LoginComponent,ProjectComponent
   ],
   imports: [
     BrowserModule,

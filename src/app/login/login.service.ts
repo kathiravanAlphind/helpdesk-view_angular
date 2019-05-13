@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http' // imported HttpClient - used to make http GET and POST requests
+
 import {Login} from './login' // might not need depending on where you handle data processing
 import { Observable } from 'rxjs/Observable';
 import {Http, Response, RequestOptions, Headers} from '@angular/http'; // NO LONGER NEEDED
