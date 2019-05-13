@@ -17,7 +17,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa fa-envelope-o">
-                        <span class="badge badge-danger">11</span>
+                        <span class="badge badge-danger"></span>
                     </i>
                     Link
                 </a>
@@ -25,7 +25,7 @@
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">
                     <i class="fa fa-envelope-o">
-                        <span class="badge badge-warning">11</span>
+                        <span class="badge badge-warning"></span>
                     </i>
                     Disabled
                 </a>
@@ -34,7 +34,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-envelope-o">
-                        <span class="badge badge-primary">11</span>
+                        <span class="badge badge-primary"></span>
                     </i>
                     Dropdown
                 </a>
@@ -50,7 +50,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa fa-bell">
-                        <span class="badge badge-info">11</span>
+                        <span class="badge badge-info"></span>
                     </i>
                     Test
                 </a>
@@ -58,7 +58,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa fa-globe">
-                        <span class="badge badge-success">11</span>
+                        <span class="badge badge-success"></span>
                     </i>
                     Test
                 </a>
@@ -66,11 +66,14 @@
         </ul>
     </div>
 </nav>
-<div class="container">
+<div class="container" *ngIf="isForm">
     <h2>Projects</h2>
-    <div class="list-group">
-        <p *ngFor="let project of projects">
-            <a href="/dashboard/{{project.id}}" class="list-group-item">{{project.pname}}</a>
-        </p>
-    </div>
+        <div *ngFor="let project of projects">
+            <!-- <a href="/dashboard/{{project.id}}" class="list-group-item">{{project.pname}}</a> -->
+            <!-- <button class="btn btn-primary">{{project.pname}}</button>&nbsp; -->
+            <a class="btn btn-primary" href="#" role="button" style="text-align: center;">{{project.pname}}</a>
+        </div>
+</div>
+<div *ngIf="!isForm">
+fgh
 </div>

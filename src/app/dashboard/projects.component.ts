@@ -13,7 +13,8 @@ export class ProjectComponent implements OnInit{
     projects = new Array<Projects>();
     id :number;
     user:any;
-
+    isForm = true;
+values:any;
     constructor(private proService : ProjectService){
         this.user =JSON.parse(localStorage.getItem('CurrentUser'));
         this.id = this.user[0].id;
@@ -37,6 +38,12 @@ export class ProjectComponent implements OnInit{
 
 
     }
+
+    showForm(value){
+        this.isForm = false;
+   this.values = value;
+    }
+
 
 
 }
