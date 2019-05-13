@@ -1,8 +1,8 @@
 <div class="container">
     <h2>Projects</h2>
     <div class="list-group">
-        <a *ngFor = "let project of projects ">
+        <p *ngFor = "let project of projects">
             <a href = "/helpdesk/{{project.id}}" class="list-group-item">{{project.pname}}</a>
-        </a>
+        </p>
     </div>
 </div>
