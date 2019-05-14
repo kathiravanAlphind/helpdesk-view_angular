@@ -24,7 +24,6 @@ export class TicketService{
         let options =  new RequestOptions({headers : headers});
         return this._http.post("http://localhost:8080/helpdesk/create", body, options);
     }
-
     private handleError(error : Response)
     {
         return Observable.throw(error);
