@@ -1,1 +1,19 @@
-{{title.description}}
+<form>
+    <div class="form-group">
+        <label for="formGroupExampleInput">Title</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" name="title" [(ngModel)] = "ticket.title">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Category</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Category" name="category" [(ngModel)] = "ticket.category">
+    </div>
+
+    <div class="form-group">
+        <label for="formGroupExampleInput">Description</label>
+        <textarea class="form-control" id="formGroupExampleInput" placeholder="Description"
+            name="description" [(ngModel)] = "ticket.description"></textarea>
+    </div>
+    <div class="form-group">
+        <button (click) = "addTickets()">Create</button>
+    </div>
+</form>

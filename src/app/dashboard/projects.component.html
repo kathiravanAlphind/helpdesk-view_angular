@@ -71,16 +71,16 @@
     <div class="row">
         <div *ngFor="let project of projects">
             <div class="col-md-4">
-                <a [routerLink]="['/dashboard',project.id]" class="btn btn-primary" (click)="projectForm(content)" role="button">{{project.pname}}</a>
+                <a [routerLink]="['/dashboard',project.id]" class="btn btn-primary" role="button">{{project.pname}}</a>
             </div>
         </div>
     </div>
 </div>
 <!--ng modal -->
-<ng-template #content let-modal>
+<!-- <ng-template #content let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <h4 class="modal-title" id="modal-basic-title">Create Ticket</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -106,10 +106,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="addTickets()">Save</button>
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+        <button type="button" class="btn btn-outline-dark" (click)="closeModal()" data-dismiss="modal">Cancel</button>
     </div>
     
 
-</ng-template>
+</ng-template> -->
 
-<app-ticket [title]="ticket"></app-ticket>
+<!-- <app-ticket [title]="ticket"></app-ticket> -->

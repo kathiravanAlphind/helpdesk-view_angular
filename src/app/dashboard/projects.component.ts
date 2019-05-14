@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Projects } from './projects';
 import { ProjectService } from './projects.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Router} from '@angular/router'
+
 
 @Component({
   selector: 'app-project',
@@ -15,7 +17,7 @@ export class ProjectComponent implements OnInit{
     id :number;
     user:any;
     isForm = true;
-    constructor(private proService : ProjectService, private modalService: NgbModal){
+    constructor(private proService : ProjectService, private modalService: NgbModal, private router : Router){
         this.user =JSON.parse(localStorage.getItem('CurrentUser'));
         this.id = this.user[0].id;
         console.log(this.id);
@@ -42,4 +44,11 @@ export class ProjectComponent implements OnInit{
             size: 'lg'
           });
     }
+
+    closeModal(){
+        this.modalService.dismissAll();
+        this.router.navigate(['/dashboard'])
+    }
+
+
 }

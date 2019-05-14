@@ -15,13 +15,14 @@ import { Tickets } from './tickets';
 export class TicketService{
 
     constructor(private _http: Http){
-
+        //http://localhost:8080/helpdesk/create
     }
 
-    createTicket() : Observable<Tickets[]>{
-        return this._http.get("http://localhost:8080/helpdesk/create")
-        .map((response: Response) => response.json())
-        .catch(this.handleError);
+    createTicket(ticket : Tickets) {
+        let body = JSON.stringify(ticket);
+        let headers = new Headers({'Content-Type' : 'application/json'});
+        let options =  new RequestOptions({headers : headers});
+        return this._http.post("http://localhost:8080/helpdesk/create", body, options);
     }
 
     private handleError(error : Response)
