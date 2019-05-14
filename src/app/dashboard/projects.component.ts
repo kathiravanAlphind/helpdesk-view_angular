@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Projects } from './projects';
 import { ProjectService } from './projects.service';
-
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-project',
@@ -11,11 +11,11 @@ import { ProjectService } from './projects.service';
 export class ProjectComponent implements OnInit{
 
     projects = new Array<Projects>();
+    ticket = new Projects();
     id :number;
     user:any;
     isForm = true;
-values:any;
-    constructor(private proService : ProjectService){
+    constructor(private proService : ProjectService, private modalService: NgbModal){
         this.user =JSON.parse(localStorage.getItem('CurrentUser'));
         this.id = this.user[0].id;
         console.log(this.id);
@@ -35,15 +35,11 @@ values:any;
         (error) => {
             console.log(error);
         });
-
-
     }
 
-    showForm(value){
-        this.isForm = false;
-   this.values = value;
+    projectForm(value : any){
+        this.modalService.open(value, {
+            size: 'lg'
+          });
     }
-
-
-
 }

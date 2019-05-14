@@ -10,7 +10,7 @@ import 'rxjs/add/observable/throw';
 
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: 'root',    //alternate in place of provider
 })
 export class ProjectService {
 
@@ -21,6 +21,14 @@ export class ProjectService {
         return this._http.get("http://localhost:8080/helpdesk/dashboard?tl_id=" + tl_id)
             .map((response: Response) => response.json())
             .catch(this.handleError);
+    }
+
+    projectForm(id : number) : Observable<Projects[]>{
+
+        return this._http.get("http://localhost:8080/helpdesk/dashboard/"+id)
+        .map((response: Response) => response.json())
+        .catch(this.handleError);
+
     }
     private handleError(error: Response) {
         return Observable.throw(error);

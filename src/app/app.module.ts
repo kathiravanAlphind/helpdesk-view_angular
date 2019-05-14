@@ -11,10 +11,11 @@ import { HttpModule } from '@angular/http';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProjectComponent } from './dashboard/projects.component';
+import { TicketComponent } from './tickets/tickets.component';
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent,ProjectComponent
+    AppComponent, LoginComponent,ProjectComponent, TicketComponent
   ],
   imports: [
     BrowserModule,

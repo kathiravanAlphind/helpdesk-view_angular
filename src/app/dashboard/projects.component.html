@@ -66,14 +66,50 @@
         </ul>
     </div>
 </nav>
-<div class="container" *ngIf="isForm">
+<div class="container">
     <h2>Projects</h2>
+    <div class="row">
         <div *ngFor="let project of projects">
-            <!-- <a href="/dashboard/{{project.id}}" class="list-group-item">{{project.pname}}</a> -->
-            <!-- <button class="btn btn-primary">{{project.pname}}</button>&nbsp; -->
-            <a class="btn btn-primary" href="#" role="button" style="text-align: center;">{{project.pname}}</a>
+            <div class="col-md-4">
+                <a [routerLink]="['/dashboard',project.id]" class="btn btn-primary" (click)="projectForm(content)" role="button">{{project.pname}}</a>
+            </div>
         </div>
+    </div>
 </div>
-<div *ngIf="!isForm">
-fgh
-</div>
+<!--ng modal -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Title</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" name="title" [(ngModel)] = "ticket.title">
+                
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Category</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Category"
+                    name="category" [(ngModel)] = "ticket.category">
+            </div>
+
+            <div class="form-group">
+                <label for="formGroupExampleInput">Description</label>
+                <textarea class="form-control" id="formGroupExampleInput" placeholder="Description"
+                    name="description" [(ngModel)] = "ticket.description"></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="addTickets()">Save</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    </div>
+    
+
+</ng-template>
+
+<app-ticket [title]="ticket"></app-ticket>
