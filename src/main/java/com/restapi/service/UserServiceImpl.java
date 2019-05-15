@@ -33,6 +33,15 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userdao.getProId(id);
 	}
+
+
+	@Override
+	public void createUpdateTicket(int id, int submitted_by, int project_id, String number, String title,
+			String category, String description, String status, String date) {
+		
+		userdao.createUpdateTicket(id, submitted_by, project_id, number, title, category, description, status, date);
+		
+	}
 	
 	
 

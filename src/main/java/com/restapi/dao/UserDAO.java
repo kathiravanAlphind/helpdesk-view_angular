@@ -12,5 +12,7 @@ public interface UserDAO {
 	public List<Projects> getProjects(int qa_id);
 	
 	public Projects getProId(long id);
+	
+	public void createUpdateTicket(int id, int submitted_by, int project_id, String number, String title, String category, String description, String status, String date);
 
 }
