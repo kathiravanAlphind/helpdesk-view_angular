@@ -5,7 +5,7 @@ export class Tickets{
     number : number;
     title : string;
     category : string;
-    description : String;
+    description : string;
     status : string;
     date : Date;
 }

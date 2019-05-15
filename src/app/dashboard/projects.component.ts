@@ -31,7 +31,9 @@ export class ProjectComponent implements OnInit{
 
         this.proService.listProjects(this.id)
         .subscribe((projectsList) => {
+            localStorage.setItem('CurrentProject' , JSON.stringify(projectsList))
             this.projects = projectsList
+            console.log(projectsList);
         },
 
         (error) => {

@@ -12,20 +12,17 @@ import { Tickets } from './tickets';
 @Injectable({
     providedIn: 'root',    //alternate in place of provider
 })
-export class TicketService{
+export class TicketService {
 
-    constructor(private _http: Http){
-        //http://localhost:8080/helpdesk/create
-    }
 
-    createTicket(ticket : Tickets) {
-        let body = JSON.stringify(ticket);
-        let headers = new Headers({'Content-Type' : 'application/json'});
-        let options =  new RequestOptions({headers : headers});
-        return this._http.post("http://localhost:8080/helpdesk/create", body, options);
+    constructor(private _http: Http) {}
+
+    createTicket(ticket :Tickets): Observable<any[]> {
+        return this._http.get("http://localhost:8080/helpdesk/create?"+ticket)
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
     }
-    private handleError(error : Response)
-    {
+    private handleError(error: Response) {
         return Observable.throw(error);
     }
 }
