@@ -1,6 +1,7 @@
 package com.restapi.controller;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -71,16 +71,16 @@ public class UserController {
 	}
 
 	@GetMapping(value = "/create")
-	public ResponseEntity<Tickets> createTicket(@ModelAttribute Tickets ticket)
+	public ResponseEntity<Tickets> createTicket(HttpServletRequest request)
 	{
-		System.out.println(ticket.getId());
+		//System.out.println(ticket.getId());
 		int id = 0;
 		
 		//int user_id = Integer.parseInt(request.getParameter("user_id"));
 		
 		//int proid = Integer.parseInt(request.getParameter("proid"));
 
-		/*String number = "0";
+		String number = "0";
 
 		String title = request.getParameter("title");
 
@@ -94,9 +94,8 @@ public class UserController {
 
 		//System.out.println("user"+this.user.get(0).getId());
 		//System.out.println("project"+this.listProject.get(0).getId());
-		 * 
-		 */
-		userService.createUpdateTicket(id, ticket.getSubmitted_by(), ticket.getProject_id(), ticket.getNumber(), ticket.getTitle(), ticket.getCategory(), ticket.getDescription(), ticket.getStatus(), ticket.getDate().toString());
+		
+		userService.createUpdateTicket(id,  this.user.get(0).getId(), this.user.get(0).getId(), number, title, category , description, status, date);
 		
 		// this.user.get(0).getId(), this.user.get(0).getId(), number, title, category , description, status, date
 
